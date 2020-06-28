@@ -61,7 +61,7 @@ function main() {
 
     local remote=$(git -C $1 show-ref origin/$branch 2> /dev/null)
     if [[ -z $remote ]]; then
-        icons="$icons %{$fg[black]%}"
+        icons="$icons %{$fg[white]%}"
     else
         local ahead=$(git -C $1 rev-list HEAD..origin/$branch 2>/dev/null | wc -l | tr -d ' ')
         if [[ $ahead -gt 0 ]]; then
