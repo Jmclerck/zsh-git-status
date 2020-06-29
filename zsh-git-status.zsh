@@ -63,14 +63,15 @@ function main() {
     if [[ -z $remote ]]; then
         icons="$icons %{$fg[white]%}"
     else
-        local ahead=$(git -C $1 rev-list HEAD..origin/$branch 2>/dev/null | wc -l | tr -d ' ')
+        local ahead=$(git -C $1 rev-list origin/$branch..HEAD 2>/dev/null | wc -l | tr -d ' ')
         if [[ $ahead -gt 0 ]]; then
-            icons="$icons %{$fg[yellow]%}$ahead"
+            icons="$icons %{$fg[yellow]%} $ahead"
         fi
 
-        local behind=$(git -C $1 rev-list origin/$branch..HEAD 2>/dev/null | wc -l | tr -d ' ')
+        local behind=$(git -C $1 rev-list HEAD..origin/$branch 2>/dev/null | wc -l | tr -d ' ')
+        
         if [[ $behind -gt 0 ]]; then	
-            icons="$icons %{$fg[green]%}$behind"
+            icons="$icons %{$fg[green]%} $behind"
         fi
 
         if [[ $branch != "master" ]]; then
