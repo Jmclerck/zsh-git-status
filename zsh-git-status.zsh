@@ -79,7 +79,7 @@ function main() {
         fi
     fi
 
-    print "%{$fg[magenta]%}$icons $branch ~@%{$reset_color%}"
+    print "%{$fg[magenta]%}$icons $branch~@%{$reset_color%}"
   else
     print "%{$fg[magenta]%}  %{$reset_color%}"
   fi
