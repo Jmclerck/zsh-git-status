@@ -1,10 +1,10 @@
-function callback() {
+function git_status_callback() {
   NEXT_GIT_STATUS=$3
 
   zle reset-prompt 
 }
 
-function main() {
+function git_status_main() {
   local icons=''
   local git=$(git -C $1 rev-parse --is-inside-work-tree 2> /dev/null)
 
@@ -88,6 +88,6 @@ function main() {
 function git_status() {
   async_init
   async_start_worker git_status_worker -n
-  async_register_callback git_status_worker callback
-  async_job git_status_worker main $1
+  async_register_callback git_status_worker git_status_callback
+  async_job git_status_worker git_status_main $1
 }
