@@ -73,13 +73,9 @@ function git_status_main() {
         if [[ $behind -gt 0 ]]; then	
             icons+=("%{$fg[green]%} $behind")
         fi
-
-        if [[ $branch != "master" ]]; then
-            icons+=("%{$fg[blue]%}")
-        fi
     fi
 
-    print "%{$fg[magenta]%}$icons $branch~@%{$reset_color%}"
+    print "%{$fg[blue]%}%{$fg[magenta]%}$icons $branch~@%{$reset_color%}"
   else
     print "%{$fg[magenta]%} %{$reset_color%}"
   fi
