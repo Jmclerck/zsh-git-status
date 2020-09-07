@@ -9,8 +9,6 @@ function git_status_main() {
   local git=$(git -C $1 rev-parse --is-inside-work-tree 2> /dev/null)
 
   if [[ $git == true ]]; then
-    icons+=("%{$fg[blue]%}")
-
     local branch=$(git -C $1 rev-parse --abbrev-ref HEAD)
 
     local stashes=$(git -C $1 stash list | rg -o '@' |  tr -d ' ' | tr -d '\n')
